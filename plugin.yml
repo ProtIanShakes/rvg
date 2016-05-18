@@ -1,0 +1,8 @@
+name: RvG
+version: 0.1.1
+description: RvG minigame
+author: Sherp
+website: https://github.com/Sherpy/rvg
+main: info.duyan.rvg.core.Main
+
+
