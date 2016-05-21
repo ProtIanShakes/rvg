@@ -17,5 +17,9 @@ public class PlayerManager {
 	public void removePlayer(Player pl) {
 		players.remove(pl);
 	}
-
+	
+	// Gets RvGPlayer based on Player key
+	public void getRvGPlayer(Player pl) {
+		players.get(pl);
+	}
 }
