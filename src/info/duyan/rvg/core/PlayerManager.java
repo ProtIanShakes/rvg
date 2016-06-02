@@ -28,6 +28,9 @@ public class PlayerManager {
 		return players.get(pl);
 	}
 	
+	
+	//Decides what team to put a player on (does not take balancing/player level into account, this will be implemented in a later version)
+	//This function is VERY temporary, it's very inefficient and will be completely re-written before release
 	public static String decideTeam() {
 		
 		int green = 0;
@@ -59,6 +62,7 @@ public class PlayerManager {
 		}
 	}
 	
+	//Gets ArrayList of Players
 	public static ArrayList<Player> getPlayers() {
 		Set<Player> pSet = players.keySet();
 		Iterator<Player> pIter = pSet.iterator();
