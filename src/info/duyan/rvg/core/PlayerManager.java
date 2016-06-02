@@ -19,7 +19,7 @@ public class PlayerManager {
 	}
 	
 	// Removes Player from Hash
-	public void removePlayer(Player pl) {
+	public static void removePlayer(Player pl) {
 		players.remove(pl);
 	}
 	
