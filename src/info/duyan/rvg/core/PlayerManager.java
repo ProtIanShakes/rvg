@@ -3,18 +3,19 @@ package info.duyan.rvg.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 
 import org.bukkit.entity.Player;
 
 public class PlayerManager {
 	// Variable Initialization
-	static HashMap<Player, String> players = new HashMap<Player, String>();
+	static HashMap<Player, RvGPlayer> players = new HashMap<Player, RvGPlayer>();
 	
 	
 	// Adds Player to Hash
-	public static void addPlayer(Player pl, String team) {
-		players.put(pl, team);
+	public static void addPlayer(Player pl, RvGPlayer rPlayer) {
+		players.put(pl, rPlayer);
 	}
 	
 	// Removes Player from Hash
@@ -23,20 +24,38 @@ public class PlayerManager {
 	}
 	
 	// Gets RvGPlayer based on Player key
-	public void getTeam(Player pl) {
-		players.get(pl);
+	public static RvGPlayer getRvGPlayer(Player pl) {
+		return players.get(pl);
 	}
 	
 	public static String decideTeam() {
 		
-		if(getPlayers().size() == 0) {
-			return "green";
+		int green = 0;
+		int red = 0;
+		ArrayList<Player> players = getPlayers();
+		for(int i = 0; i < players.size(); i++) {
+			if(getRvGPlayer(players.get(i)).getTeam().equalsIgnoreCase("green")) {
+				green++;
+			}
+			else {
+				red++;
+			}
 		}
-		else if(getPlayers().size() % 2 == 0) {
+		
+		if(green > red) {
+			return "red";
+		}
+		else if(red > green) {
 			return "green";
 		}
 		else {
-			return "red";
+			Random rnd = new Random();
+			if(rnd.nextBoolean()) {
+				return "green";
+			}
+			else {
+				return "red";
+			}
 		}
 	}
 	

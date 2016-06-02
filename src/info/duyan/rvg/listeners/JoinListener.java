@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
 import info.duyan.rvg.core.PlayerManager;
+import info.duyan.rvg.core.RvGPlayer;
 
 public class JoinListener implements Listener {
 	
@@ -13,8 +14,8 @@ public class JoinListener implements Listener {
 	@EventHandler
 	public void onLogin(PlayerLoginEvent e) {
 		Player pl = e.getPlayer();
-		String team = PlayerManager.decideTeam();
 		
-		PlayerManager.addPlayer(pl, team);
+		RvGPlayer rPlayer = new RvGPlayer(pl);
+		PlayerManager.addPlayer(pl, rPlayer);
 	}
 }
